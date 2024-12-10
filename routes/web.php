@@ -6,9 +6,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
+//Route::get('/dashboard', function () {
+ //   return view('dashboard');
+//})->name('dashboard');
 
-Route::redirect('/','register');
+//Route::redirect('/','dashboard');
 
 //Route::controller(FrontController::class)->group(function(){
 //    Route::get('/', 'index')->name('front.index');
@@ -16,10 +19,10 @@ Route::redirect('/','register');
 
 
 
-Route::get('/dashboard', function () {
+/*Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
+})->middleware(['auth'])->name('dashboard');
+*/
 Route::get('/contact', function () {
     return view('contact');
 })->middleware(['auth', 'verified'])->name('contact');
