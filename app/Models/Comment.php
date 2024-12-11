@@ -6,32 +6,31 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Product extends Model
+class Comment extends Model
 {
     protected $fillable = [
-        'name',
-        'description',
-        'price',
-        'image',
-        'category_id'
+        'user_id',
+        'product_id',
+        'content'
     ];
 
     /**
-     * Get the category that owns the Product
+     * Get the user that owns the Comment
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function category(): BelongsTo
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(Category::class,);
+        return $this->belongsTo(User::class);
     }
+
     /**
-     * Get all of the comments for the Product
+     * Get all of the product for the Comment
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function comments(): HasMany
+    public function product(): HasMany
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Product::class);
     }
 }
